@@ -1,0 +1,56 @@
+survey_taxonomy:
+  - object counting survey
+  - visual counting survey
+  - class-agnostic counting survey
+  - few-shot object counting survey
+image_counting:
+  - object counting
+  - visual counting
+  - dense object counting
+  - single image object counting
+few_shot_exemplar:
+  - few-shot object counting
+  - exemplar-based object counting
+  - exemplar based object counting
+  - class-agnostic counting
+zero_shot_open_vocab:
+  - zero-shot object counting
+  - zero shot counting
+  - open-vocabulary object counting
+  - open vocabulary object counting
+  - text-guided object counting
+foundation_models:
+  - object counting foundation models
+  - SAM object counting
+  - CLIP object counting
+  - visual counting vision-language model
+video_counting:
+  - video object counting
+  - object counting in videos
+  - unique instance counting video
+  - open-world object counting in videos
+tracking_reid:
+  - tracking based object counting
+  - re-identification object counting
+  - unique object counting video
+other_modalities:
+  - 3D object counting
+  - point cloud object counting
+  - RGB-D object counting
+  - thermal object counting
+  - event camera object counting
+applications:
+  - remote sensing object counting
+  - aerial image object counting
+  - UAV object counting
+  - cell counting computer vision
+  - microscopy counting
+benchmarks:
+  - FSC-147
+  - FSCD-147
+  - CountBench
+  - OmniCount
+  - CARPK
+  - ShanghaiTech
+  - TAO-Count
+  - VideoCount

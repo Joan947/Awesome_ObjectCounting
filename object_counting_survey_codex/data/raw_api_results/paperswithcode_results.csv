@@ -1,0 +1,47 @@
+error,source,source_query
+Expecting value: line 1 column 1 (char 0),Papers With Code,object counting survey
+Expecting value: line 1 column 1 (char 0),Papers With Code,visual counting survey
+Expecting value: line 1 column 1 (char 0),Papers With Code,class-agnostic counting survey
+Expecting value: line 1 column 1 (char 0),Papers With Code,few-shot object counting survey
+Expecting value: line 1 column 1 (char 0),Papers With Code,object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,visual counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,dense object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,single image object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,few-shot object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,exemplar-based object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,exemplar based object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,class-agnostic counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,zero-shot object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,zero shot counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,open-vocabulary object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,open vocabulary object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,text-guided object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,object counting foundation models
+Expecting value: line 1 column 1 (char 0),Papers With Code,SAM object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,CLIP object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,visual counting vision-language model
+Expecting value: line 1 column 1 (char 0),Papers With Code,video object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,object counting in videos
+Expecting value: line 1 column 1 (char 0),Papers With Code,unique instance counting video
+Expecting value: line 1 column 1 (char 0),Papers With Code,open-world object counting in videos
+Expecting value: line 1 column 1 (char 0),Papers With Code,tracking based object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,re-identification object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,unique object counting video
+Expecting value: line 1 column 1 (char 0),Papers With Code,3D object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,point cloud object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,RGB-D object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,thermal object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,event camera object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,remote sensing object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,aerial image object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,UAV object counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,cell counting computer vision
+Expecting value: line 1 column 1 (char 0),Papers With Code,microscopy counting
+Expecting value: line 1 column 1 (char 0),Papers With Code,FSC-147
+Expecting value: line 1 column 1 (char 0),Papers With Code,FSCD-147
+Expecting value: line 1 column 1 (char 0),Papers With Code,CountBench
+Expecting value: line 1 column 1 (char 0),Papers With Code,OmniCount
+Expecting value: line 1 column 1 (char 0),Papers With Code,CARPK
+Expecting value: line 1 column 1 (char 0),Papers With Code,ShanghaiTech
+Expecting value: line 1 column 1 (char 0),Papers With Code,TAO-Count
+Expecting value: line 1 column 1 (char 0),Papers With Code,VideoCount

@@ -1,0 +1,186 @@
+[
+  {
+    "sheet": "Videos",
+    "seed_id": "VID010",
+    "title": "Efficient masked AutoEncoder for video object counting and a large-scale benchmark",
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/36fa677083cb993e0036b58d2252dcf6-Abstract-Conference.html",
+    "pdf_url": "https://proceedings.iclr.cc/paper_files/paper/2025/file/36fa677083cb993e0036b58d2252dcf6-Paper-Conference.pdf",
+    "modality": "Video"
+  },
+  {
+    "sheet": "Videos",
+    "seed_id": "VID011",
+    "title": "Video object counting with scene-aware multi-object tracking",
+    "url": "https://www.igi-global.com/article/video-object-counting-with-scene-aware-multi-object-tracking/321553",
+    "pdf_url": "https://www.igi-global.com/viewtitle.aspx?titleid=321553",
+    "modality": "Video"
+  },
+  {
+    "sheet": "Videos",
+    "seed_id": "VID012",
+    "title": "Video object counting dataset",
+    "url": "https://ieeexplore.ieee.org/abstract/document/8695318/",
+    "pdf_url": null,
+    "modality": "Video"
+  },
+  {
+    "sheet": "Videos",
+    "seed_id": "VID013",
+    "title": "Depth-assisted network for indiscernible marine object counting with adaptive motion-differentiated feature encoding",
+    "url": "https://ieeexplore.ieee.org/abstract/document/11121905/",
+    "pdf_url": "https://arxiv.org/pdf/2503.08152",
+    "modality": "Video; RGB-D"
+  },
+  {
+    "sheet": "Others",
+    "seed_id": "OTH002",
+    "title": "Countnet3d: A 3d computer vision approach to infer counts of occluded objects",
+    "url": "https://openaccess.thecvf.com/content/WACV2023/html/Jenkins_CountNet3D_A_3D_Computer_Vision_Approach_To_Infer_Counts_of_WACV_2023_paper.html",
+    "pdf_url": "https://openaccess.thecvf.com/content/WACV2023/papers/Jenkins_CountNet3D_A_3D_Computer_Vision_Approach_To_Infer_Counts_of_WACV_2023_paper.pdf",
+    "modality": "3D / Point Cloud"
+  },
+  {
+    "sheet": "Others",
+    "seed_id": "OTH003",
+    "title": "Stacked objects count based on density map and two vanishing points",
+    "url": "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12257/122571Y/Stacked-objects-count-based-on-density-map-and-two-vanishing/10.1117/12.2640364.short",
+    "pdf_url": null,
+    "modality": "3D / Point Cloud"
+  },
+  {
+    "sheet": "Benchmarks_Datasets",
+    "seed_id": "BEN001",
+    "title": "Open-world text-specified object counting",
+    "url": "https://arxiv.org/abs/2306.01851",
+    "pdf_url": "https://arxiv.org/pdf/2306.01851",
+    "modality": "Image; Multimodal"
+  },
+  {
+    "sheet": "Benchmarks_Datasets",
+    "seed_id": "BEN002",
+    "title": "The MixCount Dataset: Bridging the Data Gap for Open-Vocabulary Object Counting",
+    "url": "https://arxiv.org/abs/2605.18063",
+    "pdf_url": "https://arxiv.org/pdf/2605.18063",
+    "modality": "Image; Multimodal"
+  },
+  {
+    "sheet": "Benchmarks_Datasets",
+    "seed_id": "BEN003",
+    "title": "TrueCount: Improving Open-World Object Counting with Visual-Language Models and Dynamic Multi-Modal Inputs",
+    "url": "https://dl.acm.org/doi/abs/10.1145/3746027.3755426",
+    "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3746027.3755426",
+    "modality": "Image; Multimodal"
+  },
+  {
+    "sheet": "Benchmarks_Datasets",
+    "seed_id": "BEN004",
+    "title": "Zero-shot object counting",
+    "url": "http://openaccess.thecvf.com/content/CVPR2023/html/Xu_Zero-Shot_Object_Counting_CVPR_2023_paper.html",
+    "pdf_url": "https://openaccess.thecvf.com/content/CVPR2023/papers/Xu_Zero-Shot_Object_Counting_CVPR_2023_paper.pdf",
+    "modality": "Image; Multimodal"
+  },
+  {
+    "sheet": "Remote_Sensing_Aerial_UAV",
+    "seed_id": "REM001",
+    "title": "Counting from sky: A large-scale data set for remote sensing object counting and a benchmark method",
+    "url": "https://ieeexplore.ieee.org/abstract/document/9200587/",
+    "pdf_url": "https://arxiv.org/pdf/2008.12470",
+    "modality": "Remote Sensing / Aerial"
+  },
+  {
+    "sheet": "Remote_Sensing_Aerial_UAV",
+    "seed_id": "REM002",
+    "title": "Remote sensing object counting with online knowledge learning",
+    "url": "https://ieeexplore.ieee.org/abstract/document/10922124/",
+    "pdf_url": null,
+    "modality": "Remote Sensing / Aerial"
+  },
+  {
+    "sheet": "Remote_Sensing_Aerial_UAV",
+    "seed_id": "REM003",
+    "title": "Balanced density regression network for remote sensing object counting",
+    "url": "https://ieeexplore.ieee.org/abstract/document/10535416/",
+    "pdf_url": null,
+    "modality": "Remote Sensing / Aerial"
+  },
+  {
+    "sheet": "Remote_Sensing_Aerial_UAV",
+    "seed_id": "REM004",
+    "title": "A lightweight multiscale feature fusion network for remote sensing object counting",
+    "url": "https://ieeexplore.ieee.org/abstract/document/10021616/",
+    "pdf_url": null,
+    "modality": "Remote Sensing / Aerial"
+  },
+  {
+    "sheet": "Medical_Microscopy_Cell",
+    "seed_id": "MED001",
+    "title": "Cell counting by regression using convolutional neural network",
+    "url": "https://link.springer.com/content/pdf/10.1007/978-3-319-46604-0_20.pdf",
+    "pdf_url": null,
+    "modality": "Medical / Microscopy"
+  },
+  {
+    "sheet": "Medical_Microscopy_Cell",
+    "seed_id": "MED002",
+    "title": "A method of cell counting based on computer vision",
+    "url": "https://ieeexplore.ieee.org/abstract/document/9907162/",
+    "pdf_url": null,
+    "modality": "Medical / Microscopy"
+  },
+  {
+    "sheet": "Medical_Microscopy_Cell",
+    "seed_id": "MED003",
+    "title": "A systematic survey on biological cell image segmentation and cell counting techniques in microscopic images using machine learning",
+    "url": "https://link.springer.com/article/10.1007/s11277-024-11379-7",
+    "pdf_url": null,
+    "modality": "Medical / Microscopy"
+  },
+  {
+    "sheet": "Medical_Microscopy_Cell",
+    "seed_id": "MED004",
+    "title": "Rapid characterization of cell and bacteria counts using computer vision",
+    "url": "https://dergipark.org.tr/en/doi/10.46810/tdfd.902441",
+    "pdf_url": "https://dergipark.org.tr/en/download/article-file/1659557",
+    "modality": "Medical / Microscopy"
+  },
+  {
+    "sheet": "Thermal_Event_Camera",
+    "seed_id": "THE001",
+    "title": "A large-scale drone based thermal infrared benchmark and inception transformer network for crowd counting",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0031320325014414",
+    "pdf_url": null,
+    "modality": "Thermal; Remote Sensing / Aerial"
+  },
+  {
+    "sheet": "Thermal_Event_Camera",
+    "seed_id": "THE002",
+    "title": "Visual prompt multibranch fusion network for RGB-thermal crowd counting",
+    "url": "https://ieeexplore.ieee.org/abstract/document/10576691/",
+    "pdf_url": null,
+    "modality": "Thermal; Multimodal"
+  },
+  {
+    "sheet": "Thermal_Event_Camera",
+    "seed_id": "THE003",
+    "title": "A new approach for crowd counting and individuals detection using thermal video",
+    "url": "https://www.researchgate.net/profile/Mohamed-Dessouky/publication/333044613_A_NEW_APPROACH_FOR_CROWD_COUNTING_AND_INDIVIDUALS_DETECTION_USING_THERMAL_VIDEO/links/5cd93a6fa6fdccc9dda6f949/A-NEW-APPROACH-FOR-CROWD-COUNTING-AND-INDIVIDUALS-DETECTION-USING-THERMAL-VIDEO.pdf",
+    "pdf_url": "https://www.researchgate.net/profile/Mohamed-Dessouky/publication/333044613_A_NEW_APPROACH_FOR_CROWD_COUNTING_AND_INDIVIDUALS_DETECTION_USING_THERMAL_VIDEO/links/5cd93a6fa6fdccc9dda6f949/A-NEW-APPROACH-FOR-CROWD-COUNTING-AND-INDIVIDUALS-DETECTION-USING-THERMAL-VIDEO.pdf",
+    "modality": "Thermal; Video"
+  },
+  {
+    "sheet": "Thermal_Event_Camera",
+    "seed_id": "THE004",
+    "title": "Object detection in thermal imagery for crowd density estimation",
+    "url": "https://www.theseus.fi/handle/10024/337796",
+    "pdf_url": "https://www.theseus.fi/bitstream/handle/10024/337796/Timofeeva_Polina.pdf?sequence=2",
+    "modality": "Thermal"
+  },
+  {
+    "sheet": "Thermal_Event_Camera",
+    "seed_id": "THE005",
+    "title": "FlyCount: High-speed counting of black soldier flies using neuromorphic sensors",
+    "url": "https://ieeexplore.ieee.org/abstract/document/10770156/",
+    "pdf_url": null,
+    "modality": "Event Camera"
+  }
+]
