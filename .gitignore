@@ -3,6 +3,8 @@
 __pycache__/
 **/__pycache__/
 *.pyc
+~$*.xlsx
+**/~$*.xlsx
 
 # Large generated intermediates; reproducible from scripts and source exports.
 object_counting_survey_codex/data/raw_api_results/scopus_imported_records.csv
