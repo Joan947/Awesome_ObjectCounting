@@ -1,21 +1,17 @@
-"""Create a modality-grouped review workbook from literature_matrix_clean.xlsx."""
+"""Create a plain modality/application-grouped workbook from literature_matrix_clean.xlsx."""
 
 from __future__ import annotations
 
-from copy import copy
 from pathlib import Path
 import re
 
 from openpyxl import Workbook, load_workbook
-from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
-from openpyxl.worksheet.table import Table, TableStyleInfo
+from openpyxl.styles import Alignment
 from openpyxl.utils import get_column_letter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-WORKSPACE = ROOT.parent
 SOURCE_XLSX = ROOT / "data" / "literature_matrix_clean.xlsx"
-STYLE_GUIDE_XLSX = WORKSPACE / "Object_Counting.xlsx"
 OUTPUT_XLSX = ROOT / "outputs" / "literature_matrix_grouped_by_modality.xlsx"
 
 REQUESTED_COLUMNS = [
@@ -46,21 +42,10 @@ SHEET_ORDER = [
     "Remote_Sensing_Aerial",
     "Medical_Microscopy_Cell",
     "Thermal_Event",
+    "Applications",
     "Multimodal",
     "Other",
 ]
-
-TAB_COLORS = {
-    "Survey": "8064A2",
-    "Image": "4F81BD",
-    "Video": "C0504D",
-    "3D_PointCloud": "9BBB59",
-    "Remote_Sensing_Aerial": "F79646",
-    "Medical_Microscopy_Cell": "4BACC6",
-    "Thermal_Event": "A64D79",
-    "Multimodal": "7F7F7F",
-    "Other": "BFBFBF",
-}
 
 WIDTHS = {
     "paper_title": 42,
@@ -107,7 +92,11 @@ def bucket_for(record: dict[str, object]) -> str:
     modality = clean_text(record.get("modality")).lower()
     task = clean_text(record.get("task_category")).lower()
     title = clean_text(record.get("paper_title")).lower()
-    text = " ".join([modality, task, title])
+    abstract = clean_text(record.get("abstract")).lower()
+    dataset = clean_text(record.get("dataset_or_benchmark")).lower()
+    input_type = clean_text(record.get("input_type")).lower()
+    application = clean_text(record.get("application_area")).lower()
+    text = " ".join([modality, task, title, abstract, dataset, input_type, application])
     if "survey" in task or "survey" in title or "review" in title:
         return "Survey"
     if any(term in text for term in ["medical", "microscopy", "cell", "bacteria", "histology"]):
@@ -120,10 +109,60 @@ def bucket_for(record: dict[str, object]) -> str:
         return "3D_PointCloud"
     if any(term in text for term in ["thermal", "event_camera", "event camera", "infrared"]):
         return "Thermal_Event"
-    if "multimodal" in text or "vision-language" in text or "open-vocabulary" in text or "text prompt" in text:
-        return "Multimodal"
-    if "image" in text or not modality:
+    if any(
+        term in text
+        for term in [
+            "agriculture",
+            "agricultural",
+            "crop",
+            "fruit",
+            "flower",
+            "apple",
+            "orchard",
+            "plant",
+            "wheat",
+            "rice",
+            "crowd",
+            "pedestrian",
+            "traffic",
+            "vehicle",
+            "carpk",
+            "animal",
+            "wildlife",
+            "fish",
+            "livestock",
+            "industrial",
+            "warehouse",
+            "crystal",
+            "alloy",
+        ]
+    ):
+        return "Applications"
+    if any(
+        term in text
+        for term in [
+            "image",
+            "single-image",
+            "single image",
+            "fsc-147",
+            "fsc147",
+            "few-shot",
+            "few shot",
+            "class-agnostic",
+            "zero-shot",
+            "zero shot",
+            "open-vocabulary",
+            "open vocabulary",
+            "text prompt",
+            "text-guided",
+            "exemplar",
+            "density map",
+            "object counting",
+        ]
+    ) or not modality:
         return "Image"
+    if "multimodal" in text or "vision-language" in text or "vlm" in text or "clip" in text:
+        return "Multimodal"
     return "Other"
 
 
@@ -137,41 +176,26 @@ def score_tuple(record: dict[str, object]) -> tuple[int, int, str]:
     return (tier_rank.get(tier, 9), -citations, clean_text(record.get("paper_title")).lower())
 
 
-def style_header(ws, guide_header_cells) -> None:
-    header_fill = PatternFill("solid", fgColor="D9EAF7")
-    thin = Side(style="thin", color="D9E2F3")
+def write_header(ws) -> None:
     for col_idx, column_name in enumerate(REQUESTED_COLUMNS, start=1):
         cell = ws.cell(1, col_idx)
         cell.value = column_name
-        if guide_header_cells and col_idx <= len(guide_header_cells):
-            guide = guide_header_cells[col_idx - 1]
-            cell.font = copy(guide.font)
-            cell.alignment = copy(guide.alignment)
-            cell.border = copy(guide.border)
-        cell.font = Font(name="Calibri", size=11, bold=True, color="1F1F1F")
-        cell.fill = header_fill
-        cell.border = Border(bottom=thin)
-        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+        cell.alignment = Alignment(vertical="top")
 
 
-def add_sheet(wb: Workbook, sheet_name: str, records: list[dict[str, object]], guide_header_cells) -> None:
+def add_sheet(wb: Workbook, sheet_name: str, records: list[dict[str, object]]) -> None:
     ws = wb.create_sheet(sheet_name)
-    ws.sheet_properties.tabColor = TAB_COLORS.get(sheet_name, "BFBFBF")
-    style_header(ws, guide_header_cells)
+    write_header(ws)
     records = sorted(records, key=score_tuple)
     for row_idx, record in enumerate(records, start=2):
         for col_idx, column_name in enumerate(REQUESTED_COLUMNS, start=1):
             value = record.get(column_name, "")
             ws.cell(row_idx, col_idx).value = clean_text(value)
-        if row_idx % 2 == 0:
-            for col_idx in range(1, len(REQUESTED_COLUMNS) + 1):
-                ws.cell(row_idx, col_idx).fill = PatternFill("solid", fgColor="F7FBFD")
 
     max_row = max(ws.max_row, 1)
     max_col = len(REQUESTED_COLUMNS)
     ws.freeze_panes = "A2"
     ws.auto_filter.ref = f"A1:{get_column_letter(max_col)}{max_row}"
-    ws.row_dimensions[1].height = 28
     ws.sheet_view.showGridLines = True
 
     for col_idx, column_name in enumerate(REQUESTED_COLUMNS, start=1):
@@ -182,19 +206,6 @@ def add_sheet(wb: Workbook, sheet_name: str, records: list[dict[str, object]], g
     for row_idx in range(2, max_row + 1):
         ws.row_dimensions[row_idx].height = 42 if row_idx <= 250 else 30
 
-    if records:
-        table_ref = f"A1:{get_column_letter(max_col)}{max_row}"
-        table_name = re.sub(r"[^A-Za-z0-9_]", "", f"{sheet_name}_Table")[:250]
-        table = Table(displayName=table_name, ref=table_ref)
-        table.tableStyleInfo = TableStyleInfo(
-            name="TableStyleMedium2",
-            showFirstColumn=False,
-            showLastColumn=False,
-            showRowStripes=True,
-            showColumnStripes=False,
-        )
-        ws.add_table(table)
-
 
 def main() -> None:
     records = load_records()
@@ -202,16 +213,12 @@ def main() -> None:
     for record in records:
         grouped.setdefault(bucket_for(record), []).append(record)
 
-    guide_header_cells = []
-    if STYLE_GUIDE_XLSX.exists():
-        guide_wb = load_workbook(STYLE_GUIDE_XLSX)
-        guide_ws = guide_wb["Image"] if "Image" in guide_wb.sheetnames else guide_wb[guide_wb.sheetnames[0]]
-        guide_header_cells = [guide_ws.cell(1, col_idx) for col_idx in range(1, guide_ws.max_column + 1)]
-
     wb = Workbook()
     del wb[wb.sheetnames[0]]
     for sheet_name in SHEET_ORDER:
-        add_sheet(wb, sheet_name, grouped.get(sheet_name, []), guide_header_cells)
+        if not grouped.get(sheet_name) and sheet_name in {"Multimodal", "Other"}:
+            continue
+        add_sheet(wb, sheet_name, grouped.get(sheet_name, []))
 
     OUTPUT_XLSX.parent.mkdir(parents=True, exist_ok=True)
     wb.save(OUTPUT_XLSX)
