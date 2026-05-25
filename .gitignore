@@ -3,3 +3,8 @@
 __pycache__/
 **/__pycache__/
 *.pyc
+
+# Large generated intermediates; reproducible from scripts and source exports.
+object_counting_survey_codex/data/raw_api_results/scopus_imported_records.csv
+object_counting_survey_codex/data/raw_api_results/dedup_checkpoint_latest.csv
+object_counting_survey_codex/data/raw_api_results/semantic_scholar_cache/
