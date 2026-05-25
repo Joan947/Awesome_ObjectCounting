@@ -88,6 +88,72 @@ def load_records() -> list[dict[str, object]]:
     return records
 
 
+def has_application_domain(title: str, abstract: str) -> bool:
+    title_patterns = [
+        r"\bagricultur(?:e|al)\b",
+        r"\bagro\b",
+        r"\bcrop(?:s)?\b",
+        r"\bfruit(?:s)?\b",
+        r"\bvegetable(?:s)?\b",
+        r"\bflower(?:s)?\b",
+        r"\bapple(?:s)?\b",
+        r"\borchard(?:s)?\b",
+        r"\bwheat\b",
+        r"\brice\b",
+        r"\bmaize\b",
+        r"\bcotton\b",
+        r"\btobacco\b",
+        r"\bplantation\b",
+        r"\bsmart farm\b",
+        r"\bfarm(?:ing|s)?\b",
+        r"\bpest(?:s)?\b",
+        r"\baphid(?:s)?\b",
+        r"\bwhitefly\b",
+        r"\binsect(?:s)?\b",
+        r"\bpoultry\b",
+        r"\bchicken(?:s)?\b",
+        r"\blivestock\b",
+        r"\banimal(?:s)?\b",
+        r"\bfish\b",
+        r"\bshrimp\b",
+        r"\bornamental fish\b",
+        r"\baquatic\b",
+        r"\bunderwater\b",
+        r"\btraffic\b",
+        r"\btransportation system(?:s)?\b",
+        r"\bvehicle(?:s)?\b",
+        r"\bcar object\b",
+        r"\bcrowd counting\b",
+        r"\bcrowd localization\b",
+        r"\bcrowd analysis\b",
+        r"\bcrowd density\b",
+        r"\bcrowd\b",
+        r"\bwarehouse\b",
+        r"\binventory\b",
+        r"\bstacked goods\b",
+        r"\bbuilding material(?:s)?\b",
+        r"\bcasting foundr(?:y|ies)\b",
+        r"\bsteel sheet(?:s)?\b",
+        r"\bwafer\b",
+        r"\belectronic part(?:s)?\b",
+        r"\belectronic component(?:s)?\b",
+        r"\bsealed product(?:s)?\b",
+        r"\bindustrial internet\b",
+        r"\bindustrial application(?:s)?\b",
+        r"\bsmart campus\b",
+    ]
+    if any(re.search(pattern, title) for pattern in title_patterns):
+        return True
+
+    opening_abstract = abstract[:500]
+    abstract_patterns = [
+        r"\bthis (paper|work|study|research).{0,120}\b(agricultur(?:e|al)|traffic|underwater|warehouse|inventory)\b",
+        r"\bwe (propose|present|introduce|develop).{0,120}\b(agricultur(?:e|al)|traffic|underwater|warehouse|inventory)\b",
+        r"\b(object counting|counting).{0,80}\bin (agricultur(?:e|al)|traffic|underwater|warehouse|inventory)\b",
+    ]
+    return any(re.search(pattern, opening_abstract) for pattern in abstract_patterns)
+
+
 def bucket_for(record: dict[str, object]) -> str:
     modality = clean_text(record.get("modality")).lower()
     task = clean_text(record.get("task_category")).lower()
@@ -97,9 +163,6 @@ def bucket_for(record: dict[str, object]) -> str:
     input_type = clean_text(record.get("input_type")).lower()
     application = clean_text(record.get("application_area")).lower()
     text = " ".join([modality, task, title, abstract, dataset, input_type, application])
-    title_application_text = title
-    if "application-specific" in task:
-        title_application_text = f"{title_application_text} application-specific"
     if "survey" in task or "survey" in title or "review" in title:
         return "Survey"
     if any(term in text for term in ["medical", "microscopy", "cell", "bacteria", "histology"]):
@@ -112,59 +175,7 @@ def bucket_for(record: dict[str, object]) -> str:
         return "3D_PointCloud"
     if any(term in text for term in ["thermal", "event_camera", "event camera", "infrared"]):
         return "Thermal_Event"
-    if any(
-        term in title_application_text
-        for term in [
-            "agriculture",
-            "agricultural",
-            "agro",
-            "crop",
-            "fruit",
-            "flower",
-            "apple",
-            "orchard",
-            "plant",
-            "wheat",
-            "rice",
-            "maize",
-            "cotton",
-            "tobacco",
-            "pest",
-            "aphid",
-            "whitefly",
-            "insect",
-            "poultry",
-            "chicken",
-            "farm",
-            "field grape",
-            "crowd",
-            "pedestrian",
-            "traffic",
-            "vehicle",
-            "car ",
-            "transportation",
-            "underwater",
-            "shrimp",
-            "fish",
-            "wildlife",
-            "animal",
-            "warehouse",
-            "inventory",
-            "stacked goods",
-            "building material",
-            "casting foundries",
-            "steel sheet",
-            "wafer",
-            "electronic components",
-            "cigarette pack",
-            "litter flux",
-            "smart campus",
-            "campus traffic",
-            "industrial internet",
-            "smart agriculture",
-            "river systems",
-        ]
-    ):
+    if has_application_domain(title, abstract):
         return "Applications"
     if any(
         term in text
