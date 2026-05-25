@@ -4,10 +4,11 @@ Generated: 2026-05-25
 
 ## Day 2 Status
 
-Semantic Scholar expansion is deferred until an API key is available. Current Day 2 processing used:
+Day 2 automated collection now includes the Semantic Scholar expansion. Current Day 2 processing used:
 
 - Google Scholar seed workbook: 80 unique seed records
 - Scopus exports: 3,287 imported records from 10 CSV files
+- Semantic Scholar: 620 enriched metadata rows, 624 query-bank search rows, 1,539 reference rows, and 1,392 citation rows
 - OpenAlex: 1,433 raw rows using `mailto=jowusu1@uwyo.edu`
 - Crossref: 634 raw rows
 - arXiv: 22 raw rows from a reduced high-yield query subset
@@ -15,11 +16,27 @@ Semantic Scholar expansion is deferred until an API key is available. Current Da
 
 ## Current Outputs
 
-- `data/master_papers_raw.csv`: 5,437 raw records before deduplication/screening
+- `data/master_papers_raw.csv`: 18,919 raw records before deduplication/screening
+- `data/raw_api_results/deduplicated_unique_records.csv`: 5,657 unique records after deduplication
+- `data/raw_api_results/duplicate_removed_records.csv`: 13,262 duplicate records removed
 - `data/literature_matrix_clean.xlsx`: 700 included Day 2 candidates
-- `data/screening_log.xlsx`: 700 included candidates plus 4,737 excluded/duplicate/overflow records
+- `data/screening_log.xlsx`: 700 included candidates plus 18,219 excluded/duplicate/overflow records
 - `outputs/core_reading_set.xlsx`: 150 A-core automated candidates
-- `data/raw_api_results/scopus_imported_records.csv`: normalized Scopus import
+- `data/raw_api_results/scopus_imported_records.csv`: normalized Scopus import, kept locally and ignored by git because of size
+- `data/raw_api_results/semantic_scholar_enriched_records.csv`: Semantic Scholar batch/title metadata enrichment
+- `data/raw_api_results/semantic_scholar_search_results.csv`: Semantic Scholar query-bank topic search records
+- `data/raw_api_results/semantic_scholar_references.csv`: backward citation expansion for selected seed papers
+- `data/raw_api_results/semantic_scholar_citations.csv`: forward citation expansion for selected seed papers
+
+## Deduplication Snapshot
+
+- Raw records: 18,919
+- Records after deduplication: 5,657
+- Records removed as duplicates: 13,262
+- Records with DOI after deduplication: 5,365
+- Records missing DOI after deduplication: 292
+- Records with abstract after deduplication: 4,781
+- Records missing abstract after deduplication: 876
 
 ## Candidate Tiers
 

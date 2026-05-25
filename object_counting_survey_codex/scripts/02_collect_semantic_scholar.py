@@ -330,7 +330,9 @@ def collect_links(
             errors.append({"stage": endpoint, "paper_id": paper_id, "error": clean_text(exc)})
             print(f"Semantic Scholar {endpoint} failed for {paper_id}: {exc}", flush=True)
             continue
-        for item in data.get("data", []):
+        for item in data.get("data", []) or []:
+            if not item:
+                continue
             linked = item.get("citedPaper") if relation == "reference" else item.get("citingPaper")
             if not linked:
                 continue

@@ -1,0 +1,14 @@
+{
+  "input_literature_matrix_records": 700,
+  "metadata_records_written": 620,
+  "query_bank_records_written": 624,
+  "references_written": 1539,
+  "citations_written": 1392,
+  "errors_written": 0,
+  "rate_limit_seconds": 1.1,
+  "query_limit": 20,
+  "max_title_search": 120,
+  "max_expansion_papers": 80,
+  "related_limit": 50,
+  "semantic_scholar_key_source": "S2_API_KEY environment variable"
+}
