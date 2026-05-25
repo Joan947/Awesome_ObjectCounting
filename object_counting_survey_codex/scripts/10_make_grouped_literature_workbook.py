@@ -97,6 +97,9 @@ def bucket_for(record: dict[str, object]) -> str:
     input_type = clean_text(record.get("input_type")).lower()
     application = clean_text(record.get("application_area")).lower()
     text = " ".join([modality, task, title, abstract, dataset, input_type, application])
+    title_application_text = title
+    if "application-specific" in task:
+        title_application_text = f"{title_application_text} application-specific"
     if "survey" in task or "survey" in title or "review" in title:
         return "Survey"
     if any(term in text for term in ["medical", "microscopy", "cell", "bacteria", "histology"]):
@@ -110,10 +113,11 @@ def bucket_for(record: dict[str, object]) -> str:
     if any(term in text for term in ["thermal", "event_camera", "event camera", "infrared"]):
         return "Thermal_Event"
     if any(
-        term in text
+        term in title_application_text
         for term in [
             "agriculture",
             "agricultural",
+            "agro",
             "crop",
             "fruit",
             "flower",
@@ -122,19 +126,43 @@ def bucket_for(record: dict[str, object]) -> str:
             "plant",
             "wheat",
             "rice",
+            "maize",
+            "cotton",
+            "tobacco",
+            "pest",
+            "aphid",
+            "whitefly",
+            "insect",
+            "poultry",
+            "chicken",
+            "farm",
+            "field grape",
             "crowd",
             "pedestrian",
             "traffic",
             "vehicle",
-            "carpk",
-            "animal",
-            "wildlife",
+            "car ",
+            "transportation",
+            "underwater",
+            "shrimp",
             "fish",
-            "livestock",
-            "industrial",
+            "wildlife",
+            "animal",
             "warehouse",
-            "crystal",
-            "alloy",
+            "inventory",
+            "stacked goods",
+            "building material",
+            "casting foundries",
+            "steel sheet",
+            "wafer",
+            "electronic components",
+            "cigarette pack",
+            "litter flux",
+            "smart campus",
+            "campus traffic",
+            "industrial internet",
+            "smart agriculture",
+            "river systems",
         ]
     ):
         return "Applications"
